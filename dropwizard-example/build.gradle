@@ -22,6 +22,7 @@ apply plugin: 'codenarc'
 apply plugin: 'groovy'
 apply plugin: 'maven'
 apply plugin: 'shadow'
+apply plugin: 'idea'
 
 version=currentVersion
 group=currentGroup

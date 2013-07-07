@@ -1,5 +1,9 @@
 package org.kyleboon.contact
 
+import org.kyleboon.contact.core.*
+import org.kyleboon.contact.db.*
+import org.kyleboon.contact.resources.*
+
 import com.yammer.dropwizard.Service
 import com.yammer.dropwizard.assets.AssetsBundle
 import com.yammer.dropwizard.config.Bootstrap
@@ -14,7 +18,7 @@ class ContactService extends Service<ContactConfiguration> {
     }
 
     HibernateBundle<ContactConfiguration> hibernateBundle =
-        new HibernateBundle<ContactConfiguration>([]) {
+        new HibernateBundle<ContactConfiguration>([Contact, Address]) {
             @Override
             public DatabaseConfiguration getDatabaseConfiguration(ContactConfiguration configuration) {
                 return configuration.databaseConfiguration
@@ -34,14 +38,19 @@ class ContactService extends Service<ContactConfiguration> {
     @Override
     public void initialize(Bootstrap<ContactConfiguration> bootstrap) {
         bootstrap.with {
-            name = 'Contact'
+            name = 'Contact Service'
             addBundle migrationsBundle
             addBundle hibernateBundle
+            addBundle(new AssetsBundle('/apidocs/'))
+            addBundle(new AssetsBundle('/swagger'))
         }
     }
 
     @Override
     public void run(ContactConfiguration configuration,
                     Environment environment) throws ClassNotFoundException {
+
+        ContactDAO contactDAO = new ContactDAO(hibernateBundle.sessionFactory)
+        environment.addResource(new ContactResource(contactDAO))
     }
 }

@@ -1,8 +1,8 @@
-package com.kyleboon.contact.resources
+package org.kyleboon.contact.resources
 
-import com.kyleboon.contact.core.Contact
-import com.kyleboon.contact.core.SearchCommand
-import com.kyleboon.contact.db.ContactDAO
+import org.kyleboon.contact.core.Contact
+import org.kyleboon.contact.core.SearchCommand
+import org.kyleboon.contact.db.ContactDAO
 
 import javax.validation.Valid
 import javax.ws.rs.POST
@@ -33,18 +33,18 @@ class ContactResource {
      * @param contact
      * <p>The contact to add to the system.</p>
      * <p> Example: {
-     "firstName": "Kyle",
-     "lastName": "Boon",
-     "jobTitle": "developer",
-     "phoneNumber": "999-999-9999",
-     "address": {
-     "address1":"15 South 5th Street",
-     "address2":"",
-     "city":"Minneapolis",
-     "state":"MN",
-     "county":"Hennepin",
-     "zipCode":"55402"
-     }
+        "firstName": "Kyle",
+        "lastName": "Boon",
+        "jobTitle": "developer",
+        "phoneNumber": "999-999-9999",
+        "address": {
+            "address1":"15 South 5th Street",
+            "address2":"",
+            "city":"Minneapolis",
+            "state":"MN",
+            "county":"Hennepin",
+            "zipCode":"55402"
+        }
      }
      * </p>
      * @return

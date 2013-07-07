@@ -1,6 +1,6 @@
-package com.kyleboon.contact.db
+package org.kyleboon.contact.db
 
-import com.kyleboon.contact.core.Contact
+import org.kyleboon.contact.core.Contact
 import com.yammer.dropwizard.hibernate.AbstractDAO
 import org.hibernate.SessionFactory
 import org.hibernate.criterion.MatchMode

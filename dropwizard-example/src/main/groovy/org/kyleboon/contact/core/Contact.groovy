@@ -1,4 +1,4 @@
-package com.kyleboon.contact.core
+package org.kyleboon.contact.core
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import groovy.transform.EqualsAndHashCode

@@ -36,10 +36,11 @@ repositories {
     // Spock snapshots are available from the Sonatype OSS snapshot repository
     maven { url "http://oss.sonatype.org/content/repositories/snapshots/" }
     maven {
-            name 'bintray'
-            url 'http://dl.bintray.com/kyleboon/swagger-jaxrs-groovydoclet'
+       url 'http://dl.bintray.com/kyleboon/swagger-jaxrs-groovydoclet'
     }
-    
+    maven {
+       url 'http://dl.bintray.com/kyleboon/enhanced-groovydoc'
+    }
 }
 
 dependencies {
@@ -55,6 +56,7 @@ dependencies {
 
     compile 'com.h2database:h2:1.3.170'
 
+    compile 'org.codehaus.groovy:enhanced-groovydoc:0.6'
     compile "com.bloomhealthco:swagger-jaxrs-groovydoclet:0.2.0"
 
     testCompile "com.yammer.dropwizard:dropwizard-testing:${dropwizardVersion}"

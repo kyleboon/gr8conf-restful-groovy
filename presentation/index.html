@@ -1,29 +1,29 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+	<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+	<title>RESTful Groovy</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+	<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+	<meta name="author" content="Hakim El Hattab">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+	<link rel="stylesheet" href="css/reveal.min.css">
+	<link rel="stylesheet" href="css/theme/simple.css" id="theme">
 
-		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
-		<script>
-			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
-		</script>
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<script>
+	document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+	</script>
 
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
@@ -37,34 +37,367 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-            <h1>RESTful Groovy</h1>
-            <small>Options for building a Services Oriented Architecture in Groovy</small>
+					<h1>RESTful Groovy</h1>
+					<small>Options for building a Services Oriented Architecture in Groovy</small>
+					<p>Kyle Boon</p>
+				</section>
+				<section>
+					<h2>Architecture 2011</h2>
+					<div class="fragment"><img src='images/1app.png'/></div>
+				</section>
+				<section>
+					<h2>Architecture 2012</h2>
+					<div class="fragment"><img src='images/2apps.png'/></div>
+				</section>
+				<section>
+					<h2>Architecture 2013</h2>
+					<div class="fragment"><img src='images/soa.png'/></div>
+				</section>
+				<section>
+					<h2>Goals</h2>
+					<ul>
+						<li>Separate components</li>
+						<li>Allow for different SLAs for each component</li>
+						<li>Be able to combine components in different ways</li>
+						<li>Increase developer productivity and ownership</li>
+					</ul>
+				</section>
+				<section>
+					<h2>What is Dropwizard</h2>
 
-            <p>Kyle Boon</p>
-        </section>
-        <section>
-            <h2>Kyle Boon</h2>
-                    <span style="float: left;">
-                    <div style="text-align: right;">Technical Lead @ Bloomhealth</div>
-                    <div style="text-align: right;">kyle.f.boon@gmail.com</div>
-                    <div style="text-align: right;">@kyleboon</div>
-                    <div style="text-align: right;">http://www.kyleboon.org</div>
-                    </span>
-                    <span style="float: right;">
-                    <img src="http://i.imgur.com/MSnknm0.jpg"
-                         style="line-height: 1.2em;font-size: 36.0px;letter-spacing: -0.02em;">
-                    </span>
-        </section>
+					<div style="text-align: left;">Dropwizard is a heavily opinionated framework for building web services
+						on the JVM. &nbsp;It is mostly glue around mature java libraries like Jetty, Jersey, Jackson and
+						Guava.
+					</div>
+					<div style="text-align: left;">
+						<br>
+					</div>
+					<blockquote>Dropwizard has out-of-the-box support for sophisticated configuration, application metrics,
+						logging, operational tools, and much more, allowing you and your team to ship a production-quality
+						HTTP+JSON web service in the shortest time possible.
+					</blockquote>
+				</section>
+				<section>
+					<h2>Who Created it?</h2>
+					<span style="float: left;">
+						<div>@coda</div>
+						<div>
+							<p style="text-align: left; line-height: 1.2em; font-size: 18px; letter-spacing: -0.02em;">As I've said before, the only reason Dropwizard exists at all is to provide <br> opinions on what a service should be.</p>
+
+							<p style="text-align: left; line-height: 1.2em; font-size: 18px; letter-spacing: -0.02em;">It uses fat JARs because I think they work better.</p>
+
+							<p style="text-align: left; line-height: 1.2em; font-size: 18px; letter-spacing: -0.02em;">It embeds Jetty because I think that works better.</p>
+
+							<p style="text-align: left; line-height: 1.2em; font-size: 18px; letter-spacing: -0.02em;">It uses Jackson because I think that works better.</p>
+
+							<p style="text-align: left; line-height: 1.2em; font-size: 18px; letter-spacing: -0.02em;">It uses Jersey because I think that works better.</p>
+
+							<p style="text-align: left; line-height: 1.2em; font-size: 18px; letter-spacing: -0.02em;">It has a single YAML configuration file because I think that works better.</p>
+
+							<p style="text-align: left; line-height: 1.2em; font-size: 18px; letter-spacing: -0.02em;">It wraps Logback because I think that works better.</p>	
+						</div>
+					</span>
+					<span style="float: right;">
+						<img src="https://twimg0-a.akamaihd.net/profile_images/959504887/horseshit.jpg"
+						style="line-height: 1.2em;font-size: 36.0px;letter-spacing: -0.02em;">
+					</span>
+				</section>
+				<section>
+					<h2>How does it work?</h2>
+
+					<div>Deployed as a fat jar and starts jetty. No need for a container.</div>
+					<div>
+						<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">public static void main(String[] args) throws Exception {
+	new ContactsService().run(args)
+}</code></pre>
+					</div>
+					<div>Start the server from the command line by running: </div>
+					<div>
+						<pre><code>java -jar contact_dropwizard-shadow-0.1.0-SNAPSHOT.jar 
+server start dev_config.yml</code></pre>
+					</div>
+				</section>
+				<section>
+					<h2>The Service</h2>
+					<div>Services are a collection of bundles, commands, healthchecks, tasks and resources. The service class defines all of the abilities of your application.</div>
+					<div>
+						<pre><code class="java">@Override
+public void initialize(Bootstrap bootstrap) {
+	bootstrap.name = 'configuration_service'
+
+	bootstrap.addBundle migrationsBundle
+	bootstrap.addBundle hibernateBundle
+	bootstrap.addBundle(new AssetsBundle('/swagger-ui-1.1.0/', '/swagger'))
+	bootstrap.addCommand(new migrationsCommand())
+}
+
+@Override
+public void run(ContactsConfiguration configuration,
+	Environment environment) throws ClassNotFoundException {
+
+	ContactDAO contactDAO = new ContactDAO(hibernateBundle.sessionFactory)
+	environment.addResource(new ContactResource(contactDAO))
+}</code></pre>
+					</div>
+				</section>
+				<section>
+				<h2>The Resource</h2>
+				<div>Resources model what is exposed via your RESTful API. Dropwizard uses Jersey for this so these classes are mostly jersey annotations.</div>
+				<div>
+					<pre><code class="java">@Path('/contacts')
+@Produces(MediaType.APPLICATION_JSON)
+class ContactResource {
+	private final ContactDAO contactDAO
+
+	public ContactResource(ContactDAO contactDAO) {
+		this.contactDAO = contactDAO
+	}
+
+
+	@Timed(name = 'createContact')
+	@POST
+	@UnitOfWork
+	public Contact createContact(@Valid Contact contact) {
+		return contactDAO.saveOrUpdate(contact)
+	}
+}
+					</code></pre>
+				</div>
+			</section>
+<section>
+	<h2>The Representation</h2>
+	<div>Your POGOs will be turned into JSON via Jackson. Hibernate Validator lets you specify validation rules.</div>
+	<div>
+		<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">@ToString
+@EqualsAndHashCode
+class Contact {
+	@JsonProperty
+	Long id
+
+	@NotNull
+	@NotEmpty
+	@JsonProperty
+	String firstName
+
+	@NotNull
+	@NotEmpty
+	@JsonProperty
+	String lastName
+
+	@Transient
+	@JsonIgnore
+	def someCrap = false
+}</code></pre>
+</div>
+</section>
+<section>
+	<h2>Metrics</h2>
+	<div>Yammer Metrics is built in and provides metrics over an administration port (8081). Resources can
+		be annotated with <code>@Timed</code> or <code>@Metered</code>, and <code>@ExceptionMetered</code>.</div>
+		<pre><code>"post-requests" : {
+	"type" : "timer",
+    	"duration" : {
+        "unit" : "milliseconds",
+        "min" : 0.0,
+        "max" : 0.0,
+        "mean" : 0.0,
+        "std_dev" : 0.0,
+        "median" : 0.0,
+        "p75" : 0.0,
+        "p95" : 0.0,
+        "p98" : 0.0,
+        "p99" : 0.0,
+        "p999" : 0.0
+    },
+    "rate" : {
+        "unit" : "seconds",
+        "count" : 0,
+        "mean" : 0.0,
+        "m1" : 0.0,
+        "m5" : 0.0,
+        "m15" : 0.0
+      }
+    }</code></pre>
+
+	</section>
+	<section>
+		<h2>Health Checks</h2>
+		<div>Health Checks are a method to make sure the infrastructure your service depends on are all running.
+			They are accessible on the administration port.</div>
+			<pre><code class="java">public class RedisHealthCheck extends HealthCheck {
+    private static final String ECHO = 'checking'
+    private final JedisPool jedisPool
+
+    public RedisHealthCheck(JedisPool jedisPool) {
+        super('redis')
+        this.jedisPool = jedisPool
+    }
+
+    @Override
+    protected Result check() throws Exception {
+        if ( ECHO.equalsIgnoreCase(jedisPool.resource.echo(ECHO)) ) {
+            return Result.healthy()
+        }
+
+        return Result.unhealthy('ManagedJedisPool connectivity is down!')
+    }
+}</code></pre>
+		</section>
+		<section>
+			<h2>Bundles</h2>
+			<div>Bundles are reusable blocks of behaviour designed to be reused across services. Assets, Hibernate and
+					Liquibase are all implemented as Dropwizard Bundles.</div>
+			<pre><code>@Slf4j
+abstract class RedisBundle implements ConfiguredBundle {
+    ManagedJedisPool jedisPool
+
+    abstract RedisConfiguration getRedisConfiguration(T configuration)
+
+    @Override
+    public final void initialize(Bootstrap bootstrap) {
+        log.info('Initializing Redis Bundle')
+    }
+
+    @Override
+    public final void run(T configuration, Environment environment) throws Exception {
+        jedisPool = new ManagedJedisPool(
+                new JedisPoolConfig(),
+                getRedisConfiguration(configuration).host,
+                getRedisConfiguration(configuration).port,
+                getRedisConfiguration(configuration).timeout,
+                getRedisConfiguration(configuration).db)
+
+        environment.manage(jedisPool)
+        environment.addHealthCheck(new RedisHealthCheck(jedisPool))
+    }
+}</code></pre>
+		</section>
+		<section>
+			<h2>Commands</h2>
+			<div>Commands add options to the command line interface of your service. For example the server starts based
+			on the 'server' command. Migrations run based on the 'db migrate' command. You might add your own command
+			for running functional tests or seeding the database.</div>
+		</section>
+		<section>
+			<h2>Tasks</h2>
+			<div>Tasks are run time actions available over the administration port. Dropwizard ships with a garbage
+				collection task. You might want to right a task to clean a cache by key.</div>
+			<pre><code>class FlushRedisTask extends Task {
+    ManagedJedisPool managedJedisPool
+
+    protected FlushRedisTask(String name, ManagedJedisPool managedJedisPool) {
+        super(name)
+        this.managedJedisPool = managedJedisPool
+    }
+
+    @Override
+    void execute(ImmutableMultimap<String, String> parameters, PrintWriter output) throws Exception {
+        Jedis jedis = managedJedisPool.resource
+        jedis.flushDB()
+    }
+}</code></pre>
+		</section>
+		<section>
+        	<h2>Other Stuff</h2>
+        	<div>
+        		<ul>
+            		<li>Configuration</li>
+            		<li>Logging</li>
+            		<li>Hibernate/JDBI</li>
+            		<li>Clients</li>
+            		<li>Authentication</li>
+            		<li>Views</li>
+        		</ul><
+        	</div>
+    	</section>
+		<section>
+			<h2>Grails 2.3</h2>
+			<div>
+				<ul>
+					<li>New REST APIs, making it easy to build REST APIs in Grails</li>
+					<li>Scaffolding plugin that can generate REST controllers and Async controllers</li>
+				</ul>
 			</div>
+		</section>
 
-				
 
-		</div>
+		<section>
+        	<h2>References</h2>
+        <div>
+            <ul>
+                <li>
+                    <a href="http://dropwizard.codahale.com/">Dropwizard User Guide</a>
+                </li>
+                <li>
+                    <a href="https://groups.google.com/forum/#!forum/dropwizard-user">Dropwizard User Group</a>
+                </li>
+                <li>
+                    <a href="https://github.com/codahale/dropwizard">https://github.com/codahale/dropwizard<br>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://vimeo.com/49822005">Presentation about Dropwizard @ Yammer</a>
+                </li>
+                <li>
+                    <a href="http://vimeo.com/37930578">Presentation about Dropwizard @ Simple</a>
+                </li>
+                <li>
+                    <a href="http://www.youtube.com/watch?v=czes-oa0yik">Coda Hale and Metrics</a>
+                </li>
+                <li>
+                    <a href="http://vimeo.com/40988625">Coda Hale and the Programming Ape</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section>
+        <h2>Code we've Looked at</h2>
+        <div>
+            <ul>
+                <a href="http://github.com/kyleboon/contact_dropwizard"><li>Example Contact Application</li></a>
+                <a href="http://developers.helloreverb.com/swagger"><li>Swagger</li></a>
+                <a href="http://github.com/rgahagan/enhanced-groovydoc"><li>Enhanced Groovy Doc</li></a>
+                <a href="http://github.com/rgahagan/swagger-jaxrs-doclet"><li>swagger-jaxrs-doclet</li></a>
+                <a href="http://github.com/rgahagan/swagger-jaxrs-doclet"><li>dropwizard dashboard</li></a>
+            </ul>
+        </div>
+    </section>
+    <section>
+        <h2>Thanks</h2>
+        <div>
+            <p>A special thanks to the people who actually figured all this stuff out. Including but not limited to:</p>
+            <ul>
+                <li>Chad Small</li>
+                <li>Sairam Rekapalli</li>
+                <li>Ryley Gahagan</li>
+                <li>Charlie Knudsen</li>
+                <li>John Engelman</li>
+            </ul>
+        </div>
+    </section>
+		<section>
+			<h2>Kyle Boon</h2>
+			<span style="float: left;">
+				<div style="text-align: right;">Technical Lead @ Bloomhealth</div>
+				<div style="text-align: right;">kyle.f.boon@gmail.com</div>
+				<div style="text-align: right;">@kyleboon</div>
+				<div style="text-align: right;">http://www.kyleboon.org</div>
+			</span>
+			<span style="float: right;">
+				<img src="http://i.imgur.com/MSnknm0.jpg"
+				style="line-height: 1.2em;font-size: 36.0px;letter-spacing: -0.02em;">
+			</span>
+		</section>
+	</div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
 
-		<script>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
 
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration
@@ -79,18 +412,18 @@
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+				{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
 					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
+					]
+				});
 
-		</script>
+</script>
 
-	</body>
+</body>
 </html>
